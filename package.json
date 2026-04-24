@@ -1,5 +1,5 @@
 {
-  "name": "async-ide",
+   "name": "jxmh-ide",
   "version": "0.0.29",
   "private": true,
   "type": "module",
@@ -31,9 +31,9 @@
     "test:watch": "vitest"
   },
   "build": {
-    "appId": "com.asyncshell.app",
-    "productName": "Async IDE",
-    "artifactName": "Async-IDE-${version}-${arch}.${ext}",
+    "appId": "com.jxmhshell.app",
+    "productName": "JXMH IDE",
+    "artifactName": "JXMH-IDE-${version}-${arch}.${ext}",
     "directories": {
       "output": "release"
     },

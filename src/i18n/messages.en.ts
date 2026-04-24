@@ -1,4 +1,4 @@
-﻿/** English UI copy */
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿/** English UI copy */
 export const messagesEn: Record<string, string> = {
 	'common.truncatedSuffix': '\n… (truncated)',
 	'common.soon': 'Soon',
@@ -76,7 +76,7 @@ export const messagesEn: Record<string, string> = {
 	'app.help.reportIssue': 'Report Issue',
 	'app.help.checkForUpdates': 'Check for Updates',
 	'app.help.releases': 'Release Notes',
-	'app.help.about': 'About Async IDE',
+	'app.help.about': 'About JXMH IDE',
 	'app.help.aboutVersion': 'Version {version}',
 	'app.updateReady': 'Update ready — restart to apply',
 	'app.updateReadyMacUnsigned': 'Update downloaded to Downloads. Please install manually.',
@@ -86,7 +86,7 @@ export const messagesEn: Record<string, string> = {
 	'app.help.aboutCopyInfo': 'Copy Info',
 	'app.help.aboutCopied': 'Copied',
 	'app.help.aboutClose': 'Close',
-	'app.help.aboutCopyright': '© 2026 Async IDE · MIT Licensed',
+	'app.help.aboutCopyright': '© 2026 JXMH IDE · MIT Licensed',
 	'app.menuTerminal': 'Terminal',
 	'app.menuNewTerminal': 'New Terminal',
 	'app.fileMenu.aria': 'File',
@@ -871,7 +871,7 @@ export const messagesEn: Record<string, string> = {
 	'settings.nav.network': 'Network',
 	'settings.nav.beta': 'Beta',
 	'settings.nav.dev': 'Dev',
-	'settings.autoUpdate.lead': 'Manage app updates to keep Async IDE up to date',
+	'settings.autoUpdate.lead': 'Manage app updates to keep JXMH IDE up to date',
 	'settings.autoUpdate.title': 'Auto Update',
 	'settings.autoUpdate.enableAutoUpdate': 'Enable Auto Update',
 	'settings.autoUpdate.enableAutoUpdateDesc': 'Automatically check and download updates on startup',
@@ -1088,11 +1088,11 @@ export const messagesEn: Record<string, string> = {
 	'settings.general.identityPreset': 'Identity preset',
 	'settings.general.identityPresetHint':
 		'The preset controls how User-Agent, request headers, Anthropic metadata, and the system prompt prefix are generated together.',
-	'settings.general.identityPreset.async': 'Async default',
+	'settings.general.identityPreset.async': 'JXMH default',
 	'settings.general.identityPreset.claudeCode': 'Claude Code',
 	'settings.general.identityPreset.custom': 'Custom',
 	'settings.general.identityPresetAsyncHint':
-		'Uses Async defaults: the Async-style User-Agent, X-Async-Session-Id, Async metadata, and the Async system prompt prefix.',
+		'Uses JXMH defaults: the JXMH-style User-Agent, X-JXMH-Session-Id, JXMH metadata, and the JXMH system prompt prefix.',
 	'settings.general.identityPresetClaudeCodeHint':
 		'Switches to Claude Code style end-to-end: User-Agent claude-code/<version> (same pattern as upstream getClaudeCodeUserAgent, version constant synced to that release), x-app=cli, X-Claude-Code-Session-Id, the Claude Code system prompt prefix, and Claude Code-shaped Anthropic metadata.',
 	'settings.general.identityEnabled': 'Enable provider identity signals',
@@ -1122,7 +1122,7 @@ export const messagesEn: Record<string, string> = {
 		'If a gateway rejects unknown headers, turn off "Attach HTTP headers" or replace these values with ones your gateway expects.',
 	'settings.general.identitySystemPromptText': 'System prompt prefix',
 	'settings.general.identitySystemPromptTextHint':
-		'The default tells the model it is running inside Async IDE. You can rewrite it to match your own product positioning.',
+		'The default tells the model it is running inside JXMH IDE. You can rewrite it to match your own product positioning.',
 	'settings.general.identityPreview': 'Preview',
 	'settings.general.identityPreviewHint':
 		'These are the derived signal formats for the current config. `<version>` and `<runtime-session-id>` are replaced with real runtime values on actual requests.',

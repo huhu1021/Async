@@ -80,7 +80,7 @@ export const messagesZhCN: Record<string, string> = {
 	'app.help.reportIssue': '反馈问题',
 	'app.help.checkForUpdates': '检查更新',
 	'app.help.releases': '发布说明',
-	'app.help.about': '关于 Async IDE',
+	'app.help.about': '关于 JXMH IDE',
 	'app.help.aboutVersion': '版本 {version}',
 	'app.updateReady': '更新已就绪，重启即可应用',
 	'app.updateReadyMacUnsigned': '更新已下载到下载文件夹，请手动安装',
@@ -90,7 +90,7 @@ export const messagesZhCN: Record<string, string> = {
 	'app.help.aboutCopyInfo': '复制信息',
 	'app.help.aboutCopied': '已复制',
 	'app.help.aboutClose': '关闭',
-	'app.help.aboutCopyright': '© 2026 Async IDE · MIT 许可',
+	'app.help.aboutCopyright': '© 2026 JXMH IDE · MIT 许可',
 	'app.menuTerminal': '终端',
 	'app.menuNewTerminal': '新建终端',
 	'app.fileMenu.aria': '文件',
@@ -855,7 +855,7 @@ export const messagesZhCN: Record<string, string> = {
 	'settings.nav.network': '网络',
 	'settings.nav.beta': '测试版',
 	'settings.nav.dev': '开发',
-	'settings.autoUpdate.lead': '管理应用更新，保持 Async IDE 始终为最新版本',
+	'settings.autoUpdate.lead': '管理应用更新，保持 JXMH IDE 始终为最新版本',
 	'settings.autoUpdate.title': '自动更新',
 	'settings.autoUpdate.enableAutoUpdate': '启用自动更新',
 	'settings.autoUpdate.enableAutoUpdateDesc': '启动时自动检查并下载更新',
@@ -1067,14 +1067,14 @@ export const messagesZhCN: Record<string, string> = {
 	'settings.general.lead3': ' 配置。',
 	'settings.general.identityTitle': '模型提供商标识',
 	'settings.general.identityLead':
-		'为请求选择一套身份信号预设。你可以直接使用 Async 默认方案，也可以切换到 Claude Code 源码同款方案；只有在选择“自定义”时才需要手动填写具体值。',
+		'为请求选择一套身份信号预设。你可以直接使用 JXMH 默认方案，也可以切换到 Claude Code 源码同款方案；只有在选择“自定义”时才需要手动填写具体值。',
 	'settings.general.identityPreset': '标识预设',
 	'settings.general.identityPresetHint': '预设会同时决定 User-Agent、请求头、Anthropic metadata 与系统提示前缀的生成方式。',
-	'settings.general.identityPreset.async': 'Async 默认',
+	'settings.general.identityPreset.async': 'JXMH 默认',
 	'settings.general.identityPreset.claudeCode': 'Claude Code',
 	'settings.general.identityPreset.custom': '自定义',
 	'settings.general.identityPresetAsyncHint':
-		'使用 Async 的默认标识格式：Async 风格的 User-Agent、X-Async-Session-Id、Async metadata 和 Async 系统提示前缀。',
+		'使用 JXMH 的默认标识格式：JXMH 风格的 User-Agent、X-JXMH-Session-Id、JXMH metadata 和 JXMH 系统提示前缀。',
 	'settings.general.identityPresetClaudeCodeHint':
 		'严格切到 Claude Code 风格：User-Agent 为 claude-code/<version>（与上游 getClaudeCodeUserAgent 同形，版本号与同目录发行版 MACRO.VERSION 对齐）、x-app=cli、X-Claude-Code-Session-Id、Claude Code 系统提示前缀，以及 Claude Code 结构的 Anthropic metadata。',
 	'settings.general.identityEnabled': '启用提供商身份信号',
@@ -1091,7 +1091,7 @@ export const messagesZhCN: Record<string, string> = {
 		'在 Anthropic Messages 请求体里附带 user_id JSON，包含 client_app、entrypoint、version 与 session_id。',
 	'settings.general.identitySystemPrompt': '附加系统提示前缀',
 	'settings.general.identitySystemPromptDesc':
-		'让模型本身知道它正运行在 Async 里。即使某些 provider 会过滤自定义头，这一层通常仍然有效。',
+		'让模型本身知道它正运行在 JXMH IDE 里。即使某些 provider 会过滤自定义头，这一层通常仍然有效。',
 	'settings.general.identityUserAgentProduct': 'User-Agent 产品标识',
 	'settings.general.identityUserAgentProductHint':
 		'最终会拼成 `product/version (entrypoint, client-app/...)` 这种形式；默认按 Claude Code 的命名模式映射到 Async。',

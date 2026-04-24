@@ -1,4 +1,4 @@
-# Async IDE
+# JXMH IDE
 
 <p align="center">
   <img src="docs/assets/async-logo-desktop.svg" width="120" height="120" alt="Async Logo" />
@@ -31,7 +31,7 @@ The goal is simple: **match [Cursor](https://cursor.com) in features and experie
 You can think of it as an AI-native desktop workspace: Agent, Monaco editor, Git, diff/review flow, and terminal are all in one place, but the stack underneath is transparent and hackable. The project uses **Apache 2.0** license, **BYOK** for model access, and keeps threads, settings, and plans **local-first** by default.
 
 
-| Aspect                 | **Cursor**                              | **Async IDE**                                                           |
+| Aspect                 | **Cursor**                              | **JXMH IDE**                                                           |
 | ---------------------- | --------------------------------------- | ----------------------------------------------------------------------- |
 | **License / delivery** | Proprietary product                     | **Open source** codebase you can inspect and fork                       |
 | **Model access**       | Product billing / built-in integrations | **BYOK** for OpenAI, Anthropic, Gemini, and compatible APIs             |
@@ -41,11 +41,11 @@ You can think of it as an AI-native desktop workspace: Agent, Monaco editor, Git
 
 ---
 
-## What is Async IDE?
+## What is JXMH IDE?
 
-Async IDE is an open-source AI-native desktop application designed as your command center for working with coding agents. Rather than being a chat plugin bolted onto the side of an editor, it starts from the **Agent Loop** and brings multi-model conversations, autonomous tool execution, and review workflows into a single workspace.
+JXMH IDE is an open-source AI-native desktop application designed as your command center for working with coding agents. Rather than being a chat plugin bolted onto the side of an editor, it starts from the **Agent Loop** and brings multi-model conversations, autonomous tool execution, and review workflows into a single workspace.
 
-### Why use Async?
+### Why use JXMH IDE?
 
 - **Agent-first** — The agent can directly access your workspace, tools, and terminal through a clear **Think → Plan → Execute → Observe** loop.
 - **Transparent process** — Streaming tool parameters (JSON rendered as it generates) + **tool trajectory** cards (`Read`, `Write`, `Edit`, `Glob`, `Grep`, Shell, etc.), so every step is visible.
