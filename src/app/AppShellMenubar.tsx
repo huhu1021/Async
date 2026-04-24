@@ -609,9 +609,9 @@ export const AppShellMenubar = memo(function AppShellMenubar({
 	);
 });
 
-const HELP_DOC_URL = 'https://github.com/ZYKJShadow/Async#readme';
-const HELP_ISSUES_URL = 'https://github.com/ZYKJShadow/Async/issues/new';
-const HELP_RELEASES_URL = 'https://github.com/ZYKJShadow/Async/releases';
+const HELP_DOC_URL = 'https://github.com/huhu1021/Async#readme';
+const HELP_ISSUES_URL = 'https://github.com/huhu1021/Async/issues/new';
+const HELP_RELEASES_URL = 'https://github.com/huhu1021/Async/releases';
 
 type HelpMenuDropdownProps = {
 	t: TFunction;

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { BrandLogo } from './BrandLogo';
 import type { TFunction } from './i18n';
 
-const REPO_URL = 'https://github.com/ZYKJShadow/Async';
+const REPO_URL = 'https://github.com/huhu1021/Async';
 
 type VersionInfo = {
 	version: string;

@@ -215,7 +215,7 @@ describe('AutoUpdate Settings Configuration', () => {
 				build: {
 					publish: {
 						provider: 'github',
-						owner: 'ZYKJShadow',
+						owner: 'huhu1021',
 						repo: 'Async',
 						releaseType: 'release',
 					},
