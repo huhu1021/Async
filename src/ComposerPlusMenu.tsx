@@ -35,6 +35,18 @@ type PlusSubLayout = {
 	maxHeight: number;
 };
 
+interface SubLayoutWithTop {
+	left: number;
+	top: number;
+	maxHeight: number;
+}
+
+interface SubLayoutWithBottom {
+	left: number;
+	bottom: number;
+	maxHeight: number;
+}
+
 /** 首帧估算高度（hint + 模式行 + 分隔 + 子项）*/
 const plusMenuEstHeight = () => MODE_IDS.length * 48 + 220;  // 增加额外空间，避免滚动条
 
@@ -349,15 +361,14 @@ export function ComposerPlusMenu({
 			const top = mainL.top ?? 0;
 			const avail = Math.max(0, vh - POPOVER_VIEW_MARGIN - top);
 			const maxH = Math.round(Math.max(120, Math.min(subNatural, avail, hardCap)));
-			const newSubLayout = { left: subLeft, top, maxHeight: maxH };
+			const newSubLayout: SubLayoutWithTop = { left: subLeft, top, maxHeight: maxH };
 			
 			// 稳定性检查
-			const prevSub = prevSubLayoutRef.current;
+			const prevSub = prevSubLayoutRef.current as SubLayoutWithTop | SubLayoutWithBottom | undefined;
 			const shouldUpdateSub = !prevSub || 
 				prevSub.left !== newSubLayout.left ||
-				prevSub.top !== newSubLayout.top ||
-				prevSub.bottom !== newSubLayout.bottom ||
-				prevSub.maxHeight !== newSubLayout.maxHeight;
+				(top !== undefined && 'top' in prevSub && prevSub.top !== newSubLayout.top) ||
+				('maxHeight' in prevSub && prevSub.maxHeight !== newSubLayout.maxHeight);
 			
 			if (shouldUpdateSub) {
 				prevSubLayoutRef.current = newSubLayout;
@@ -367,15 +378,14 @@ export function ComposerPlusMenu({
 			const bottom = mainL.bottom ?? 0;
 			const avail = Math.max(0, vh - POPOVER_VIEW_MARGIN - bottom);
 			const maxH = Math.round(Math.max(120, Math.min(subNatural, avail, hardCap)));
-			const newSubLayout = { left: subLeft, bottom, maxHeight: maxH };
+			const newSubLayout: SubLayoutWithBottom = { left: subLeft, bottom, maxHeight: maxH };
 			
 			// 稳定性检查
-			const prevSub = prevSubLayoutRef.current;
+			const prevSub = prevSubLayoutRef.current as SubLayoutWithTop | SubLayoutWithBottom | undefined;
 			const shouldUpdateSub = !prevSub || 
 				prevSub.left !== newSubLayout.left ||
-				prevSub.top !== newSubLayout.top ||
-				prevSub.bottom !== newSubLayout.bottom ||
-				prevSub.maxHeight !== newSubLayout.maxHeight;
+				(bottom !== undefined && 'bottom' in prevSub && prevSub.bottom !== newSubLayout.bottom) ||
+				('maxHeight' in prevSub && prevSub.maxHeight !== newSubLayout.maxHeight);
 			
 			if (shouldUpdateSub) {
 				prevSubLayoutRef.current = newSubLayout;
