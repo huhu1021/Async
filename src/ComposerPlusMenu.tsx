@@ -35,8 +35,8 @@ type PlusSubLayout = {
 	maxHeight: number;
 };
 
-/** 首帧估算高度（hint + 模式行 + 分隔 + 子项） */
-const plusMenuEstHeight = () => MODE_IDS.length * 48 + 180;
+/** 首帧估算高度（hint + 模式行 + 分隔 + 子项）*/
+const plusMenuEstHeight = () => MODE_IDS.length * 48 + 220;  // 增加额外空间，避免滚动条
 
 /** 主栏无纵向滚动时 scrollHeight 常等于 clientHeight，不能反映真实内容高度 */
 function measurePlusMainContentHeight(mainRoot: HTMLElement): number {
@@ -273,10 +273,13 @@ export function ComposerPlusMenu({
 		left: 0,
 		width: 280,
 		top: 120,
-		maxHeightPx: 380,
+		maxHeightPx: 500,  // 增加最大高度，避免显示滚动条
 		minHeightPx: 160,
 	});
 	const [subLayout, setSubLayout] = useState<PlusSubLayout | null>(null);
+	// 记录上一次的布局值，用于稳定性检查
+	const prevMainLayoutRef = useRef<ClampedPopoverLayout | null>(null);
+	const prevSubLayoutRef = useRef<PlusSubLayout | null>(null);
 
 	const runLayout = useCallback(() => {
 		const el = anchorRef.current;
@@ -304,7 +307,26 @@ export function ComposerPlusMenu({
 			contentHeight: mainNatural,
 			preferAboveNearViewportBottom: true,
 		});
-		setMainLayout(mainL);
+		// 对 maxHeightPx 取整，避免小数点导致的布局抖动
+		const stableMainL = {
+			...mainL,
+			maxHeightPx: Math.round(mainL.maxHeightPx),
+		};
+		
+		// 稳定性检查：只有当布局值真正改变时才更新
+		const prevMain = prevMainLayoutRef.current;
+		const shouldUpdateMain = !prevMain || 
+			prevMain.left !== stableMainL.left ||
+			prevMain.width !== stableMainL.width ||
+			prevMain.maxHeightPx !== stableMainL.maxHeightPx ||
+			prevMain.top !== stableMainL.top ||
+			prevMain.bottom !== stableMainL.bottom ||
+			prevMain.placement !== stableMainL.placement;
+		
+		if (shouldUpdateMain) {
+			prevMainLayoutRef.current = stableMainL;
+			setMainLayout(stableMainL);
+		}
 
 		const subOpen = submenu === 'skills' || submenu === 'mcp';
 		if (!subOpen) {
@@ -326,13 +348,39 @@ export function ComposerPlusMenu({
 		if (mainL.placement === 'below') {
 			const top = mainL.top ?? 0;
 			const avail = Math.max(0, vh - POPOVER_VIEW_MARGIN - top);
-			const maxH = Math.max(120, Math.min(subNatural, avail, hardCap));
-			setSubLayout({ left: subLeft, top, maxHeight: maxH });
+			const maxH = Math.round(Math.max(120, Math.min(subNatural, avail, hardCap)));
+			const newSubLayout = { left: subLeft, top, maxHeight: maxH };
+			
+			// 稳定性检查
+			const prevSub = prevSubLayoutRef.current;
+			const shouldUpdateSub = !prevSub || 
+				prevSub.left !== newSubLayout.left ||
+				prevSub.top !== newSubLayout.top ||
+				prevSub.bottom !== newSubLayout.bottom ||
+				prevSub.maxHeight !== newSubLayout.maxHeight;
+			
+			if (shouldUpdateSub) {
+				prevSubLayoutRef.current = newSubLayout;
+				setSubLayout(newSubLayout);
+			}
 		} else {
 			const bottom = mainL.bottom ?? 0;
 			const avail = Math.max(0, vh - POPOVER_VIEW_MARGIN - bottom);
-			const maxH = Math.max(120, Math.min(subNatural, avail, hardCap));
-			setSubLayout({ left: subLeft, bottom, maxHeight: maxH });
+			const maxH = Math.round(Math.max(120, Math.min(subNatural, avail, hardCap)));
+			const newSubLayout = { left: subLeft, bottom, maxHeight: maxH };
+			
+			// 稳定性检查
+			const prevSub = prevSubLayoutRef.current;
+			const shouldUpdateSub = !prevSub || 
+				prevSub.left !== newSubLayout.left ||
+				prevSub.top !== newSubLayout.top ||
+				prevSub.bottom !== newSubLayout.bottom ||
+				prevSub.maxHeight !== newSubLayout.maxHeight;
+			
+			if (shouldUpdateSub) {
+				prevSubLayoutRef.current = newSubLayout;
+				setSubLayout(newSubLayout);
+			}
 		}
 	}, [anchorRef, submenu]);
 
@@ -345,15 +393,11 @@ export function ComposerPlusMenu({
 			runLayout();
 			requestAnimationFrame(() => runLayout());
 		});
+		// 只监听子菜单的大小变化，不监听主菜单，避免无限循环
 		const ro =
 			typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => runLayout()) : null;
-		if (ro) {
-			if (plusMainRef.current) {
-				ro.observe(plusMainRef.current);
-			}
-			if (plusSubRef.current) {
-				ro.observe(plusSubRef.current);
-			}
+		if (ro && plusSubRef.current) {
+			ro.observe(plusSubRef.current);
 		}
 		const onWin = () => runLayout();
 		window.addEventListener('resize', onWin);
@@ -404,6 +448,9 @@ export function ComposerPlusMenu({
 			setSubmenu(null);
 			setPickingImages(false);
 			setBusyMcpIds([]);
+			// 重置布局引用
+			prevMainLayoutRef.current = null;
+			prevSubLayoutRef.current = null;
 		}
 	}, [open]);
 
@@ -462,7 +509,7 @@ export function ComposerPlusMenu({
 					left: mainLayout.left,
 					width: mainLayout.width,
 					maxHeight: mainLayout.maxHeightPx,
-					overflowY: 'auto',
+					overflowY: 'visible',  // 禁用滚动，让内容完全显示
 					...(mainLayout.placement === 'below'
 						? { top: mainLayout.top ?? 0 }
 						: { bottom: mainLayout.bottom ?? 0 }),
