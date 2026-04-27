@@ -68,13 +68,14 @@ export function AboutDialog({ open, t, shell, onClose }: Props) {
 
 	const versionLabel = t('app.help.aboutVersion').replace('{version}', info?.version || '—');
 
-	const openRepo = () => {
-		if (shell) {
-			void shell.invoke('shell:openExternalUrl', REPO_URL).catch(() => {});
-		} else {
-			window.open(REPO_URL, '_blank', 'noopener,noreferrer');
-		}
-	};
+	// TODO: 暂时隐藏打开仓库按钮
+	// const openRepo = () => {
+	// 	if (shell) {
+	// 		void shell.invoke('shell:openExternalUrl', REPO_URL).catch(() => {});
+	// 	} else {
+	// 		window.open(REPO_URL, '_blank', 'noopener,noreferrer');
+	// 	}
+	// };
 
 	const copyInfo = () => {
 		const lines = [
