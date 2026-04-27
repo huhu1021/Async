@@ -133,9 +133,9 @@ export function AboutDialog({ open, t, shell, onClose }: Props) {
 					</div>
 				</div>
 				<div className="ws-about-actions">
-					<button type="button" className="ws-about-btn ws-about-btn--ghost" onClick={openRepo}>
+					{/* <button type="button" className="ws-about-btn ws-about-btn--ghost" onClick={openRepo}>
 						{t('app.help.aboutOpenRepo')}
-					</button>
+					</button> */}
 					<button type="button" className="ws-about-btn ws-about-btn--ghost" onClick={copyInfo}>
 						{copied ? t('app.help.aboutCopied') : t('app.help.aboutCopyInfo')}
 					</button>

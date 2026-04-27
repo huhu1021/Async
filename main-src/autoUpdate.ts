@@ -241,6 +241,8 @@ export function initAutoUpdate(win: BrowserWindow): void {
 	setMainWindow(win);
 
 	// 延迟 30 秒后首次检查更新，避免影响启动性能
+	// TODO: 暂时禁用自动更新检查，等待修复 GitHub Release 配置
+	/*
 	setTimeout(() => {
 		if (isAutoUpdateEnabled()) {
 			checkForUpdates().catch((err) => {
@@ -257,4 +259,5 @@ export function initAutoUpdate(win: BrowserWindow): void {
 			});
 		}
 	}, 60 * 60 * 1000);
+	*/
 }
