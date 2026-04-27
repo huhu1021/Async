@@ -1,5 +1,3 @@
-import { useId } from 'react';
-
 /**
  * Async 品牌标：参考新版 A/S 流线结构，收敛为适合小尺寸展示的灰银图标。
  */
@@ -12,8 +10,6 @@ export function BrandLogo({
 	size?: number;
 	'aria-label'?: string;
 }) {
-	const id = useId();
-
 	return (
 		<svg
 			className={className}
